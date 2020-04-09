@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\LinkHandling\LinkService;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\Folder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Service\FlexFormService;
+use TYPO3\CMS\Core\Service\FlexFormService;
 
 /**
  * Class PluginInformation
@@ -32,8 +32,6 @@ use TYPO3\CMS\Extbase\Service\FlexFormService;
 class PluginInformation
 {
     /**
-     * TODO: replace with TYPO3\CMS\Core\Service\FlexFormService when dropping TYPO3 v8
-     *
      * This class has an alias in TYPO3 v9
      * @var FlexFormService
      */
