@@ -22,7 +22,8 @@
                         </a>
                     </f:then>
                     <f:else>
-                        <f:link.action arguments="{image:image.uid, listPage:currentPage, categoryPage:currentCategoryPage, categoryFolder:currentCategoryFolder.uid, listFolder:currentListFolder.uid}">
+                        <f:link.action action="list"
+                                arguments="{image:image.uid, listPage:currentPage, categoryPage:currentCategoryPage, categoryFolder:currentCategoryFolder.uid, listFolder:currentListFolder.uid}">
                             <f:image image="{image}" width="{settings.size.width}" height="{settings.size.height}"/>
                         </f:link.action>
                     </f:else>
@@ -37,14 +38,16 @@
 <f:if condition="{numberOfPages} > 1">
     <f:if condition="{isFirstPage}">
         <f:else>
-            <f:link.action arguments="{listPage:previousPage, image:currentImage.uid, categoryPage:currentCategoryPage, categoryFolder:currentCategoryFolder.uid, listFolder:currentListFolder.uid}">
+            <f:link.action action="list"
+                    arguments="{listPage:previousPage, image:currentImage.uid, categoryPage:currentCategoryPage, categoryFolder:currentCategoryFolder.uid, listFolder:currentListFolder.uid}">
                 <f:translate key="previous">previous</f:translate>
             </f:link.action>
         </f:else>
     </f:if>
     <f:if condition="{isLastPage}">
         <f:else>
-            <f:link.action arguments="{listPage:nextPage, image:currentImage.uid, categoryPage:currentCategoryPage, categoryFolder:currentCategoryFolder.uid, listFolder:currentListFolder.uid}">
+            <f:link.action action="list"
+                   arguments="{listPage:nextPage, image:currentImage.uid, categoryPage:currentCategoryPage, categoryFolder:currentCategoryFolder.uid, listFolder:currentListFolder.uid}">
                 <f:translate key="next">next</f:translate>
             </f:link.action>
         </f:else>
