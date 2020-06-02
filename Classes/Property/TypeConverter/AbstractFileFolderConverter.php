@@ -16,23 +16,47 @@ namespace CoStack\FalGallery\Property\TypeConverter;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Resource\ResourceInterface;
-use TYPO3\CMS\Extbase\Domain\Model\AbstractFileFolder;
 use TYPO3\CMS\Extbase\Property\Exception;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface;
+use TYPO3\CMS\Extbase\Property\TypeConverter\AbstractTypeConverter;
 
 /**
  * Class AbstractFileFolderConverter
  */
-abstract class AbstractFileFolderConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\AbstractFileFolderConverter
+abstract class AbstractFileFolderConverter extends AbstractTypeConverter
 {
+    /**
+     * @var int
+     */
+    protected $priority = 10;
+
+    /**
+     * @var string
+     */
+    protected $expectedObjectType;
+
+    /**
+     * @var \TYPO3\CMS\Core\Resource\ResourceFactory
+     */
+    protected $fileFactory;
+
+    /**
+     * @param \TYPO3\CMS\Core\Resource\ResourceFactory $fileFactory
+     */
+    public function injectFileFactory(ResourceFactory $fileFactory): void
+    {
+        $this->fileFactory = $fileFactory;
+    }
+
     /**
      * @param int|string $source
      * @param string $targetType
      * @param array $convertedChildProperties
      * @param PropertyMappingConfigurationInterface $configuration
      *
-     * @return ResourceInterface
+     * @return mixed
      * @throws Exception
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
@@ -43,7 +67,7 @@ abstract class AbstractFileFolderConverter extends \TYPO3\CMS\Extbase\Property\T
         string $targetType,
         array $convertedChildProperties = [],
         PropertyMappingConfigurationInterface $configuration = null
-    ): AbstractFileFolder {
+    ) {
         $object = $this->getOriginalResource($source);
         if (empty($this->expectedObjectType) || !$object instanceof $this->expectedObjectType) {
             throw new Exception(
@@ -53,4 +77,10 @@ abstract class AbstractFileFolderConverter extends \TYPO3\CMS\Extbase\Property\T
         }
         return $object;
     }
+
+    /**
+     * @param string|int $source
+     * @return \TYPO3\CMS\Core\Resource\ResourceInterface|null
+     */
+    abstract protected function getOriginalResource($source): ?ResourceInterface;
 }

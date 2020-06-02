@@ -14,20 +14,22 @@
 							<config>
 								<type>select</type>
 								<renderType>selectSingle</renderType>
-								<items>
-									<numIndex index="1">
+								<items type="array">
+									<numIndex index="1" type="array">
 										<numIndex index="0">Show</numIndex>
 										<numIndex index="1">Gallery->show;</numIndex>
 									</numIndex>
-									<numIndex index="2">
+									<numIndex index="2" type="array">
 										<numIndex index="0">List</numIndex>
 										<numIndex index="1">Gallery->list;</numIndex>
 									</numIndex>
-									<numIndex index="3">
+									<numIndex index="3" type="array">
 										<numIndex index="0">Category</numIndex>
 										<numIndex index="1">Gallery->category;</numIndex>
 									</numIndex>
 								</items>
+								<maxitems>1</maxitems>
+								<size>1</size>
 							</config>
 						</TCEforms>
 					</switchableControllerActions>
